@@ -1,49 +1,85 @@
 ---
-title: Intro
+title: Introdução
 sidebar_position: 1
 slug: /
 ---
 
-# Tutorial Intro
+# Infraestrutura de Cidades Inteligentes
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Esta página serve como um hub de informações e atividades relacionadas à área
+de computação do módulo 9 do curso de Engenharia de Computação do Inteli. Neste
+módulo, trabalharemos com os desafios de escalabilidade envolvidos em um
+projeto de IoT em alta escala, visando a construção da infraestrutura
+necessária para cidades inteligentes.
 
-## Getting Started
+A seguir, um resumo em português claro e conciso do que será desenvolvido em
+cada sprint deste módulo. Note que uma versão mais detalhada pode ser vista nos
+cards da Adalove assim como em seções específicas nesta documentação.
 
-Get started by **creating a new site**.
+## Sprint 1
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+Entendimento do projeto e versão inicial de um simulador de dispositivos MQTT
+fidedigno com as especificações dadas pelo parceiro. Os itens de entrega são:
 
-### What you'll need
+* Canvas de proposta de valor;
+* Análise PESTEL;
+* TAM, SAM e SOM;
+* Matriz de risco e plano de contingência;
+* Plano de comunicação;
+* Análise financeira do projeto;
+* Personas;
+* Mapa de jornada de usuário;
+* Requisitos funcionais e não funcionais;
+* Planejamento de validação dos requisitos definidos;
+* Simulador de dispositivos MQTT; e
+* Testes e validação do simulador.
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## Sprint 2
 
-## Generate a new site
+Construção da primeira versão completa do projeto, mas sem preocupar-se com
+escalabilidade ainda. Isso significa implementar um broker MQTT com suporte a
+funcionalidades de segurança básica (autenticação e autorização de acesso), um
+banco de dados estruturado simples e um dashboard inicial. Os itens de entrega
+são:
 
-Generate a new Docusaurus site using the **classic template**.
+* Análise de impacto ético;
+* Broker MQTT com autenticação e autorização de acesso;
+* Implementação de armazenamento de dados em um DB estruturado;
+* Versão inicial do dashboard;
+* Validação dos sistemas de autenticação e autorização do broker MQTT; e
+* Correção dos issues registrados relativos à sprint passada. 
 
-The classic template will automatically be added to your project after you run the command:
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+## Sprint 3
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+Evolução do sistema de armazenamento, passando para uma solução de
+armazenamento não estruturado com integração a sistema de segurança. Evolução
+do dashboard para um frontend feito sob medida e com autenticação de usuários.
+Os itens de entrega são:
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+* Planejamento de hiperconectividade para cidades inteligentes;
+* Implementação de armazenamento não estruturado com segurança;
+* Evolução do dashboard (solução sob medida e autenticação);
+* Validação da segurança do sistema de armazenamento;
+* Validação do sistema de autenticação do dashboard; e 
+* Correção dos issues registrados relativos à sprint passada. 
 
-## Start your site
+## Sprint 4
 
-Run the development server:
+Adequação do sistema visando a escalabilidade. Implementação de sistema de
+processamento de eventos complexos. Os itens de entrega são:
 
-```bash
-cd my-website
-npm run start
-```
+* Implementação e integração de sistema de processamento de eventos complexos;
+* Validação dos requisitos não funcionais de escalabilidade; e
+* Correção dos issues registrados relativos à sprint passada. 
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+## Sprint 5
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+Prova de conceito de um sistema capaz de processar dados de dispositivos de
+borda em uma escala compatível com cidades inteligentes. Os itens de entrega
+são:
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+* Ajuste fino dos sistemas e sua integração;
+* Correção dos issues registrados durante todo o módulo;
+* Apresentação final do projeto; e
+* Documentação completa.
