@@ -34,7 +34,7 @@ fidedigno com as especificações dadas pelo parceiro. Os itens de entrega são:
 * Simulador de dispositivos MQTT; e
 * Testes e validação do simulador.
 
-## Sprint 2
+## [Sprint 2](/sprint2) 
 
 Construção da primeira versão completa do projeto, mas sem preocupar-se com
 escalabilidade ainda. Isso significa implementar um broker MQTT com suporte a
@@ -50,7 +50,7 @@ são:
 * Correção dos issues registrados relativos à sprint passada. 
 
 
-## Sprint 3
+## [Sprint 3](/sprint3) 
 
 Evolução do sistema de armazenamento, passando para uma solução de
 armazenamento não estruturado com integração a sistema de segurança. Evolução
@@ -64,7 +64,7 @@ Os itens de entrega são:
 * Validação do sistema de autenticação do dashboard; e 
 * Correção dos issues registrados relativos à sprint passada. 
 
-## Sprint 4
+## [Sprint 4](/sprint4) 
 
 Adequação do sistema visando a escalabilidade. Implementação de sistema de
 processamento de eventos complexos. Os itens de entrega são:
@@ -73,7 +73,7 @@ processamento de eventos complexos. Os itens de entrega são:
 * Validação dos requisitos não funcionais de escalabilidade; e
 * Correção dos issues registrados relativos à sprint passada. 
 
-## Sprint 5
+## [Sprint 5](/sprint5) 
 
 Prova de conceito de um sistema capaz de processar dados de dispositivos de
 borda em uma escala compatível com cidades inteligentes. Os itens de entrega
