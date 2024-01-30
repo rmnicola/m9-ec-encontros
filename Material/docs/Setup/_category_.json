@@ -1,8 +1,8 @@
 {
-  "label": "Sprint 5",
-  "position": 6,
+  "label": "Setup",
+  "position": 3,
   "link": {
     "type": "generated-index",
-    "description": "Ajustes finais"
+    "description": "Setup das ferramentas para o módulo"
   }
 }
