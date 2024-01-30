@@ -1,9 +1,9 @@
-![GitHub issues](https://img.shields.io/github/issues/:rmnicola/:m9-ec-encontros)
-![GitHub forks](https://img.shields.io/github/forks/:rmnicola/:m9-ec-encontros)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/:rmnicola/:m9-ec-encontros/:deploy)
-![GitHub last commit](https://img.shields.io/github/last-commit/:rmnicola/:m9-ec-encontros)
+![GitHub issues](https://img.shields.io/github/issues/rmnicola/m9-ec-encontros)
+![GitHub forks](https://img.shields.io/github/forks/rmnicola/m9-ec-encontros)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/rmnicola/m9-ec-encontros/deploy.yaml)
+![GitHub last commit](https://img.shields.io/github/last-commit/rmnicola/m9-ec-encontros)
 
-# Material do módulo de infraestrutura de cidades inteligentes
+# Módulo de infraestrutura de cidades inteligentes
 
 Este é o repositório que abriga o material da área de computação do módulo 9 do
 curso de Engenharia de Computação do Inteli, cujo tema é Hiperconectividade de
