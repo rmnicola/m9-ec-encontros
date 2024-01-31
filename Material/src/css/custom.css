@@ -29,3 +29,38 @@
   --ifm-background-color: #000000;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Override non-category links to be horizonally compact */
+li > a.menu__link {
+  justify-content: flex-start;
+}
+
+.autoestudo a::before {
+  padding-right: 0.5rem;
+  content: url(../icons/autoestudo.svg);
+}
+
+.ponderada a::before {
+  padding-right: 0.5rem;
+  content: url(../icons/ponderada.svg);
+}
+
+.instrucao a::before {
+  padding-right: 0.5rem;
+  content: url(../icons/instrucao.svg);
+}
+
+.opcional a::before {
+  padding-right: 0.5rem;
+  content: url(../icons/opcional.svg);
+}
+
+.orientacao a::before {
+  padding-right: 0.5rem;
+  content: url(../icons/orientacao.svg);
+}
+
+.artefato a::before {
+  padding-right: 0.5rem;
+  content: url(../icons/artefato.svg);
+}

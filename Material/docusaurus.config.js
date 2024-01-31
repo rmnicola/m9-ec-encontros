@@ -14,7 +14,7 @@ const projectName = 'm9-ec-encontros'; // Usually your repo name.
 const config = {
   title: 'Módulo 9 - EC',
   tagline: 'Infraestrutura de cidades inteligentes',
-  favicon: 'img/inteli.svg',
+  favicon: 'icons/inteli.svg',
 
   // Set the production url of your site here
   url: `https://${organizationName}.github.io`,
@@ -64,7 +64,7 @@ const config = {
         title: 'Módulo 9 - EC',
         logo: {
           alt: 'Logo Inteli',
-          src: 'img/inteli.svg',
+          src: 'icons/inteli.svg',
         },
         items: [
           {
