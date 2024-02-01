@@ -212,9 +212,10 @@ isso, não tem muito o que eu possa fazer =-(
 A seção dos **artefatos** contem uma descrição **detalhada** de todos os artefatos
 do metaprojeto que competem à area de computação. Aqui você não vai encontrar a
 descrição dos artefatos de UX ou Negócios. Para isso, visite a
-[Adalove](adalove.inteli.edu.br/). Na subseção de artefatos dentro da seção de
-introdução (de novo, é essa aqui em que estamos agora =D) você vai encontrar um
-resumo de cada sprint e um link para a página que detalha os artefatos.
+[Adalove](https://adalove.inteli.edu.br/). Na subseção de artefatos dentro da
+seção de introdução (de novo, é essa aqui em que estamos agora =D) você vai
+encontrar um resumo de cada sprint e um link para a página que detalha os
+artefatos.
 
 A seção de **setup das ferramentas** contem todos os autoestudos que não são
 exatamente o cerne do módulo, mas são tutoriais úteis para que você possa
