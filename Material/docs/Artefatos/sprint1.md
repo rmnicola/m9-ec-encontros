@@ -22,14 +22,19 @@ para mostrar o correto funcionamento deste primeiro protótipo.
 
 * [Paho MQTT](https://eclipse.dev/paho/)
 * [Lib paho-mqtt para Python](https://pypi.org/project/paho-mqtt/)
+* [Lib paho-mqtt para Go](https://github.com/eclipse/paho.mqtt.golang)
 
 ### 1.2. Padrão de entrega
 
+:::warning
+
 O padrão de entrega do artefato contempla uma série de requisitos para que a
 atividade seja considerada concluída. Embora não haja atribuição direta de
-pontuação aos itens aqui descritos, entenda-se que o não cumprimento de
-qualquer dos requisitos pode, no melhor dos casos, acarretar em um desconto de
-nota e, no pior caso, invalidar a entrega por completo. Fique atento!
+pontuação aos itens aqui descritos, entenda-se que o **não cumprimento de
+qualquer dos requisitos** pode, no melhor dos casos, acarretar em um **desconto
+de nota** e, no pior caso, **invalidar a entrega por completo**. Fique atento!
+
+:::
 
 1. O código fonte da solução deve estar disponível no repositório do grupo no
    Github (na branch `main`), em um diretório denominado `src`. É provável que
@@ -38,13 +43,12 @@ nota e, no pior caso, invalidar a entrega por completo. Fique atento!
 2. Os testes desenvolvidos devem estar disponíveis no diretório `tests` e,
    quando possível, aplicados de forma automatizada. Os testes realizados sem
    automatização devem ter seu procedimento de execução e resultados claramente
-   descritos em um arquivo contido dentro do diretório de testes. testes e os
-   resultados em um arquivo markdown dentro da pasta 'tests'. 
+   descritos em um arquivo contido dentro do diretório de testes.
 3. As instruções para que o parceiro possa executar o projeto devem estar
    claramente discriminadas na documentação, com um link no README para que a
    seção possa ser prontamente acessada.
 4. O projeto em seu estado atual deve estar disponível em um release do Github
-   cujo nome deve incluir a numeração da sprint.
+   cujo nome deve incluir a numeração da sprint (e.g. release-sprint-1).
 5. As questões centrais de desenvolvimento da sprint e os testes devem ser
    apresentadas de forma clara durante o review com o parceiro.
 
@@ -87,11 +91,15 @@ estar relacionado à escalabilidade.
 
 ### 2.2. Padrão de entrega
 
+:::warning
+
 O padrão de entrega do artefato contempla uma série de requisitos para que a
 atividade seja considerada concluída. Embora não haja atribuição direta de
 pontuação aos itens aqui descritos, entenda-se que o não cumprimento de
 qualquer dos requisitos pode, no melhor dos casos, acarretar em um desconto de
 nota e, no pior caso, invalidar a entrega por completo. Fique atento!
+
+:::
 
 1. O texto desenvolvido pelo grupo deve estar disponível em uma página estática
    gerada pelo framework Docusaurus. Para tal, deve haver um diretório no
