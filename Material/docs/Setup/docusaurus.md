@@ -1,6 +1,6 @@
 ---
 title: Docusaurus
-sidebar_position: 1
+sidebar_position: 6
 sidebar_class_name: opcional
 slug: /docusaurus
 ---
@@ -10,11 +10,18 @@ import TabItem from '@theme/TabItem';
 
 # Setup docusaurus V3
 
-Para a documentação do projeto deste módulo, vamos utilizar uma ferramenta
-capaz de gerar sites estáticos a partir de arquivos `mdx` ou `jsx` em um
-formato conveniente para uma documentação. Essa ferramenta se chama
-[docusaurus](https://docusaurus.io/). Segue um breve tutorial de como fazer o
-setup da sua página no docusaurus utilizando o padrão definido pelo curso.
+Para a documentação do projeto deste módulo, vamos utilizar o
+[docusaurus](https://docusaurus.io/), uma ferramenta capaz de gerar sites
+estáticos a partir de arquivos `mdx` ou `jsx`. O site criado é perfeito para
+fazer documentações completas e fáceis de navegar. Nesta seção, apresentaremos
+de forma breve o procedimento de setup da sua página utilizando o docusaurus.
+
+Neste tutorial, iremos configurar o projeto padrão do docusaurus e fazer
+algumas alterações para se adequar ao modelo proposto para a documentação do
+curso de Engenharia de Computação do Inteli. O que **não** faremos: configurar
+o deploy automático do docusaurus no Github Pages. Isso será mostrado em outra
+seção deste material. Nesta seção, trabalharemos apenas com o docusaurus em um
+host local.
 
 Note que utilizaremos uma estrutura de monorepo para o nosso repositório, o que
 significa que o código-fonte e a estrutura da documentação ficarão no mesmo
@@ -41,9 +48,8 @@ repositorio-do-projeto
 
 ## 1. Instalando e criando o esqueleto do projeto
 
-Dentro do diretório principal do seu repositório de projeto, rode o seguinte
-comando, responsável por criar um projeto-esqueleto com a estrutura e tudo o
-necessário para conseguir compilar sua página de documentação:
+Antes de mais nada, vamos criar um projeto-esqueleto utilizando o formato
+padrão oferecido pelo docusaurus. Para isso, rode:
 
 ```bash
 npx create-docusaurus@latest docs classic
@@ -68,8 +74,8 @@ npm start
 
 Esse comando irá inicializar a versão local da sua documentação. Sugere-se
 fortemente o teste local de toda a documentação antes do deploy usando o github
-pages. Por padrão, o Docusaurus irá utilizar a porta `3000`. Sendo assim, será
-possível acessar a página local por http://localhost:3000.
+actions. Por padrão, o Docusaurus irá utilizar a porta `3000`. Sendo assim, será
+possível acessar a página local em: http://localhost:3000.
 
 ## 2. Eliminando a página inicial e a seção de blog
 
@@ -265,7 +271,8 @@ Pronto! Já não temos mais a seção de blog.
 Para eliminar a página inicial, precisamos de três etapas:
 
 1. Configurar a rota base do docs como `/`;
-2. Adicionar um slug para `/` no front-matter de uma de nossas páginas mdx; e
+2. Adicionar um slug para `/` no front-matter de uma de nossas páginas de
+   conteúdo; e
 3. Eliminar o jsx e css relacionados à página inicial atual.
 
 Para fazer a primeira etapa, basta editar novamente o arquivo

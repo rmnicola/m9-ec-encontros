@@ -1,6 +1,6 @@
 ---
 title: Github actions
-sidebar_position: 3
+sidebar_position: 7
 sidebar_class_name: opcional
 slug: /actions
 ---
@@ -8,10 +8,16 @@ slug: /actions
 # Automatizando tarefas com o Actions
 
 O GitHub Actions é uma ferramenta de automação que permite configurar fluxos de
-trabalho (workflows) diretamente no seu repositório GitHub. Esses workflows
-podem automatizar testes, builds, deployments, e qualquer outro tipo de
-processo de software, rodando em eventos específicos dentro do seu repositório,
-como push, pull requests, ou eventos agendados.
+trabalho (workflows) diretamente no seu repositório do Github. A utilizade de
+criar esses fluxos de trabalho é que eles podem ser executados pelas máquinas
+virtuais do Github de acordo com os gatilhos definidos por você em um arquivo
+de configuração. Isso significa que você pode automatizar tarefas para rodar de
+forma independente do seu hardware e até mesmo simulando diversos sistemas
+operacionais e configurações. Com isso, podemos criar um mecanismo para
+realizar testes automatizados, builds, deployments. Esse tipo de esteira de
+automação é o que permite a implementação de CI/CD em times de desenvolvimento.
+Sendo assim, é bem útil para um desenvolvedor aprender ao menos o básico do
+Github Actions.
 
 Em nosso módulo, vamos utilizar o Github Actions como uma forma conveniente de
 automatizar o deploy de nossa página de documentação (docusaurus) e alguns de
@@ -27,8 +33,13 @@ seu repositório.
 mkdir -p .github/workflows
 ```
 
-A seguir, vamos criar um arquivo contendo nossa workflow de teste. Crie um
-arquivo chamado `teste.yaml` e vamos adicionar o seguinte conteúdo:
+A seguir, vamos criar um arquivo contendo nossa workflow de teste. O arquivo de
+configuração de workflows do actions é o `yaml`. Ele é um formato de arquivo de
+texto puro estruturado de forma hierarquica. Diferente do `xml`, o `yaml` é um
+formato de arquivo menos verboso e, portanto, mais fácil de ser lido por um ser
+humano. Para saber mais sobre esse formato, acesse [esse
+link](https://spacelift.io/blog/yaml). Crie um arquivo chamado `teste.yaml` e
+vamos adicionar o seguinte conteúdo:
 
 ```yaml showLineNumbers title="teste.yaml"
 name: Testa o github actions
@@ -69,7 +80,7 @@ a ser rodado. Esse comando pode ser multi-linhas ou mesmo um script
 ambiente do github actions)
 
 Ou seja, esse arquivo define um workflow chamado `Testa o github actions`, que
-contem um job chamado `teste`, que roda em ubuntu e executa apenas um passo que
+contem um job chamado `teste`, que roda em Ubuntu e executa apenas um passo que
 roda o comando `echo Hello, world!`. Esse workflow é acionado sempre que há um
 evento de `push` para o repositório, independente de qual branch.
 
