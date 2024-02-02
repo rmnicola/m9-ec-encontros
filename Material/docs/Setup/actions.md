@@ -1,6 +1,6 @@
 ---
 title: Github actions
-sidebar_position: 3
+sidebar_position: 7
 sidebar_class_name: opcional
 slug: /actions
 ---
