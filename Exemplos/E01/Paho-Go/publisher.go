@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	opts := MQTT.NewClientOptions().AddBroker("tcp://localhost:1883")
+	opts := MQTT.NewClientOptions().AddBroker("tcp://localhost:1891")
 	opts.SetClientID("go_publisher")
 
 	client := MQTT.NewClient(opts)
