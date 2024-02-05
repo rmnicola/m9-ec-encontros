@@ -15,14 +15,6 @@ Transport), que é um protocolo de mensagens leve e eficiente, ideal para
 ambientes de IoT devido ao seu baixo uso de largura de banda e eficiência
 energética.
 
-O MQTT é um protocolo de publicação/assinatura que permite a comunicação entre
-dispositivos com baixa largura de banda e em redes que podem experimentar
-níveis variáveis de latência devido à natureza instável das conexões de rede,
-como é comum em ambientes de IoT. O Eclipse Paho fornece bibliotecas que
-permitem aos desenvolvedores integrar facilmente a funcionalidade MQTT em
-aplicações de software em uma variedade de linguagens de programação, incluindo
-Java, C, Python, JavaScript, Go, entre outras.
-
 Além disso, o Eclipse Paho também oferece suporte a outros protocolos
 relacionados à IoT, como o MQTT-SN, que é uma variação do MQTT para redes
 sensíveis (como ZigBee). A ênfase do Paho está na criação de clientes que são
@@ -36,34 +28,46 @@ Foundation assegura que o Paho continue a ser desenvolvido e mantido
 ativamente, seguindo padrões abertos e sendo acessível a todos os
 desenvolvedores interessados em soluções de IoT.
 
-## Configurando um Broker MQTT Local com Mosquitto
+## 1. Configurando um Broker MQTT Local com Mosquitto
 
-Antes de utilizar as bibliotecas do Eclipse Paho em Python ou Go, é necessário configurar um broker MQTT. O Mosquitto é uma opção popular devido à sua leveza e facilidade de uso.
+Antes de utilizar as bibliotecas do Eclipse Paho em Python ou Go, é necessário
+configurar um broker MQTT. O Mosquitto é uma opção popular devido à sua leveza
+e facilidade de uso.
 
-### Instalação do Mosquitto
+### 1.1. Instalação do Mosquitto
 
-1. **Windows**: Baixe o instalador do [site oficial do Mosquitto](https://mosquitto.org/download/) e siga as instruções de instalação.
-2. **Linux**: Use o gerenciador de pacotes da sua distribuição. Por exemplo, no Ubuntu, execute `sudo apt-get install mosquitto mosquitto-clients`.
+1. **Windows**: Baixe o instalador do [site oficial do
+   Mosquitto](https://mosquitto.org/download/) e siga as instruções de
+   instalação.
+2. **Linux**: Use o gerenciador de pacotes da sua distribuição. Por exemplo, no
+   Ubuntu, execute `sudo apt-get install mosquitto mosquitto-clients`.
 3. **macOS**: Use o Homebrew, executando `brew install mosquitto`.
 
-### Configuração Básica
+### 1.2. Configuração Básica
 
-Após a instalação, o Mosquitto pode ser iniciado com a configuração padrão. No entanto, é recomendável criar um arquivo de configuração básico.
+Após a instalação, o Mosquitto pode ser iniciado com a configuração padrão. No
+entanto, é recomendável criar um arquivo de configuração básico.
 
-1. Crie um arquivo chamado `mosquitto.conf` e adicione as seguintes linhas para uma configuração básica:
+1. Crie um arquivo chamado `mosquitto.conf` e adicione as seguintes linhas para
+   uma configuração básica:
 
    ```
    listener 1883
    allow_anonymous true
    ```
 
-2. Inicie o Mosquitto com este arquivo de configuração: `mosquitto -c mosquitto.conf`.
+2. Inicie o Mosquitto com este arquivo de configuração: 
 
-## Utilizando o Eclipse Paho em Python
+```bash
+mosquitto -c mosquitto.conf
+```
 
-Para usar o Paho em Python, primeiro instale a biblioteca e, em seguida, escreva um script simples para publicar e assinar mensagens.
+## 2. Utilizando o Eclipse Paho em Python
 
-### Instalação
+Para usar o Paho em Python, primeiro instale a biblioteca e, em seguida,
+escreva um script simples para publicar e assinar mensagens.
+
+### 2.1. Instalação
 
 Instale a biblioteca Paho MQTT para Python:
 
@@ -71,7 +75,7 @@ Instale a biblioteca Paho MQTT para Python:
 pip install paho-mqtt
 ```
 
-### Exemplo de Código
+### 2.2. Exemplo de Código
 
 ```python
 import paho.mqtt.client as mqtt
@@ -97,17 +101,17 @@ client.publish("test/topic", "Hello MQTT")
 client.loop_forever()
 ```
 
-## Utilizando o Eclipse Paho em Go
+## 3. Utilizando o Eclipse Paho em Go
 
 Para usar o Paho em Go, instale a biblioteca e escreva um exemplo de código para interagir com o MQTT.
 
-### Instalação
+### 3.1. Instalação
 
 ```bash
 go get github.com/eclipse/paho.mqtt.golang
 ```
 
-### Exemplo de Código
+### 3.2. Exemplo de Código
 
 ```go
 package main
@@ -150,8 +154,3 @@ func main() {
     client.Disconnect(250)
 }
 ```
-
-Esses exemplos são básicos e destinam-se a demonstrar a publicação e assinatura
-de mensagens usando o MQTT com o Eclipse Paho em Python e Go. Para aplicações
-mais complexas, você deve explorar funcionalidades adicionais como qualidade de
-serviço (QoS), retenção de mensagens e autenticação segura.
