@@ -52,7 +52,7 @@ entanto, é recomendável criar um arquivo de configuração básico.
    uma configuração básica:
 
    ```
-   listener 1883
+   listener 1891
    allow_anonymous true
    ```
 
@@ -75,82 +75,196 @@ Instale a biblioteca Paho MQTT para Python:
 pip install paho-mqtt
 ```
 
-### 2.2. Exemplo de Código
+### 2.2. Publisher
+
+```python showLineNumbers title="publisher.py"
+import paho.mqtt.client as mqtt
+import time
+
+# Configuração do cliente
+client = mqtt.Client("python_publisher")
+
+# Conecte ao broker
+client.connect("localhost", 1891, 60)
+
+# Loop para publicar mensagens continuamente
+try:
+    while True:
+        message = "Hello MQTT " + time.strftime("%H:%M:%S")
+        client.publish("test/topic", message)
+        print(f"Publicado: {message}")
+        time.sleep(2)
+except KeyboardInterrupt:
+    print("Publicação encerrada")
+
+client.disconnect()
+```
+
+Aqui não há muito o que ressaltar do código acima, ele se assemelha muito ao
+que já estamos acostumados a fazer com ROS. Primeiro, instanciamos um objeto do
+tipo cliente com:
 
 ```python
+mqtt.Client(client_id="", clean_session=True, userdata=None, protocol=MQTTv311, transport="tcp")
+```
+
+Após isso, nos conectamos a nosso broker local rodando em mosquitto com:
+```python
+client.connect(host, port=1883, keepalive=60, bind_address="")
+```
+
+A seguir, utilizamos dentro de um loop infinito:
+```python
+client.publish(topic, payload=None, qos=0, retain=False)
+```
+Para publicar uma mensagem em um tópico.
+
+:::info
+
+Todas as declarações de métodos e construtores, assim como uma explicação mais
+detalhada de cada um dos seus parâmetros, pode ser visto na [documentação da
+biblioteca paho-mqtt](https://pypi.org/project/paho-mqtt/).
+
+:::
+
+### 2.3. Subscriber
+
+```python showLineNumbers title="subscriber.py"
 import paho.mqtt.client as mqtt
 
 # Callback quando uma mensagem é recebida do servidor.
 def on_message(client, userdata, message):
     print(f"Recebido: {message.payload.decode()} no tópico {message.topic}")
 
+# Callback para quando o cliente recebe uma resposta CONNACK do servidor.
+def on_connect(client, userdata, flags, rc):
+    print("Conectado com código de resultado "+str(rc))
+    # Inscreva no tópico aqui, ou se perder a conexão e se reconectar, então as
+    # subscrições serão renovadas.
+    client.subscribe("test/topic")
+
 # Configuração do cliente
-client = mqtt.Client("python_client")
+client = mqtt.Client("python_subscriber")
+client.on_connect = on_connect
 client.on_message = on_message
 
 # Conecte ao broker
-client.connect("localhost", 1883, 60)
+client.connect("localhost", 1891, 60)
 
-# Inscreva no tópico
-client.subscribe("test/topic")
-
-# Publicando uma mensagem
-client.publish("test/topic", "Hello MQTT")
-
-# Loop para manter o cliente executando
+# Loop para manter o cliente executando e escutando por mensagens
 client.loop_forever()
 ```
 
+Aqui nós temos um mecanismo muito semelhante aos **callbacks** de ROS, só que
+temos dois tipos de callback:
+
+1. on_message - gatilho para quando há uma nova mensagem em um tópico no qual
+   estamos inscritos; e
+2. on_connect - gatilho para quando a conexão com o broker é bem sucedida.
+
+Note que a configuração da inscrição ao tópico `test/topic` se dá apenas quando
+há uma conexão estabelecida com o broker. Esse tipo de confirmação jamais
+poderia ser feita com o ROS, pois ele usa um protocolo que não fornece
+confirmação de recebimento de mensagens/conexões (UDP).
+
 ## 3. Utilizando o Eclipse Paho em Go
 
-Para usar o Paho em Go, instale a biblioteca e escreva um exemplo de código para interagir com o MQTT.
+Para usar o Paho em Go, instale a biblioteca e escreva um exemplo de código
+para interagir com o MQTT.
 
-### 3.1. Instalação
+### 3.1. Criando um novo módulo
+
+Como já haviamos visto na seção de setup da linguagem Go, é mais fácil primeiro
+criar um módulo, adicionar o import necessário em nosso código para, enfim,
+instalar todas as dependências de forma automática. Sendo assim, vamos criar o
+novo módulo:
 
 ```bash
-go get github.com/eclipse/paho.mqtt.golang
+go mod init paho-go
 ```
 
-### 3.2. Exemplo de Código
+### 3.2. Publisher
 
-```go
+Agora vamos criar o arquivo `publisher.go` e preenche-lo com o código para
+publicar uma mensagem continuamente no tópico `test/topic`:
+
+```go showLineNumbers title="publisher.go"
 package main
 
 import (
-    "fmt"
-    MQTT "github.com/eclipse/paho.mqtt.golang"
-    "time"
+	"fmt"
+	"time"
+
+	MQTT "github.com/eclipse/paho.mqtt.golang"
 )
 
-// Função de callback para quando receber uma mensagem
+func main() {
+	opts := MQTT.NewClientOptions().AddBroker("tcp://localhost:1891")
+	opts.SetClientID("go_publisher")
+
+	client := MQTT.NewClient(opts)
+	if token := client.Connect(); token.Wait() && token.Error() != nil {
+		panic(token.Error())
+	}
+
+	for {
+		text := "Hello MQTT " + time.Now().Format(time.RFC3339)
+		token := client.Publish("test/topic", 0, false, text)
+		token.Wait()
+		fmt.Println("Publicado:", text)
+		time.Sleep(2 * time.Second)
+	}
+}
+```
+
+### 3.3. Subscriber
+
+```go showLineNumbers title="subscriber.go"
+package main
+
+import (
+	"fmt"
+	MQTT "github.com/eclipse/paho.mqtt.golang"
+)
+
 var messagePubHandler MQTT.MessageHandler = func(client MQTT.Client, msg MQTT.Message) {
-    fmt.Printf("Recebido: %s do tópico: %s\n", msg.Payload(), msg.Topic())
+	fmt.Printf("Recebido: %s do tópico: %s\n", msg.Payload(), msg.Topic())
 }
 
 func main() {
-    opts := MQTT.NewClientOptions().AddBroker("tcp://localhost:1883")
-    opts.SetClientID("go_client")
-    opts.SetDefaultPublishHandler(messagePubHandler)
+	opts := MQTT.NewClientOptions().AddBroker("tcp://localhost:1891")
+	opts.SetClientID("go_subscriber")
+	opts.SetDefaultPublishHandler(messagePubHandler)
 
-    // Cria e inicia um cliente MQTT
-    client := MQTT.NewClient(opts)
-    if token := client.Connect(); token.Wait() && token.Error() != nil {
-        panic(token.Error())
-    }
+	client := MQTT.NewClient(opts)
+	if token := client.Connect(); token.Wait() && token.Error() != nil {
+		panic(token.Error())
+	}
 
-    // Inscreve no tópico
-    if token := client.Subscribe("test/topic", 1, nil); token.Wait() && token.Error() != nil {
-        fmt.Println(token.Error())
-        return
-    }
+	if token := client.Subscribe("test/topic", 1, nil); token.Wait() && token.Error() != nil {
+		fmt.Println(token.Error())
+		return
+	}
 
-    // Publica uma mensagem
-    token := client.Publish("test/topic", 0, false, "Hello MQTT")
-    token.Wait()
-
-    time.Sleep(3 * time.Second)
-
-    // Desconecta o cliente
-    client.Disconnect(250)
+	fmt.Println("Subscriber está rodando. Pressione CTRL+C para sair.")
+	select {} // Bloqueia indefinidamente
 }
+```
+
+### 3.4. Instalando as dependencias e rodando o código
+
+Agora basta rodar:
+
+```bash
+go mod tidy
+```
+
+Para instalar as dependências e
+
+```bash
+go mod run publisher.go
+```
+
+```bash 
+go mod run subscriber.go
 ```
