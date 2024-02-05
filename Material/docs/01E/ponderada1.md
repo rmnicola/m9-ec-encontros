@@ -1,5 +1,5 @@
 ---
-title: Simulador de dispositivos IoT 1
+title: Simulador IoT 1
 sidebar_position: 4
 sidebar_class_name: ponderada
 slug: /ponderada1
@@ -16,9 +16,21 @@ uso da biblioteca Eclipse Paho.
 
 A primeira atividade do módulo tem como objetivo a criação de um simulador de
 dispositivos IoT capaz de enviar informações em um tópico com o formato de
-dados consistente com o seguinte dispositivo de exemplo:
+dados consistente com os seguintes dispositivos de exemplo:
 
-**Datasheet aqui em breve**
+[Sensor de Radiação
+Solar](https://sigmasensors.com.br/produtos/sensor-de-radiacao-solar-sem-fio-hobonet-rxw-lib-900)
+
+[SPS30](https://www.alldatasheet.com/view.jsp?Searchword=Sps30%20datasheet&gad_source=1&gclid=CjwKCAiA7t6sBhAiEiwAsaieYhkbnMeIYLDdvsNp4culvHNBwikKTM4QvT16S8ImRQTC9o1Dl6LQ-BoCe8cQAvD_BwE)
+
+[MiCS-6814](https://datasheetspdf.com/pdf/1350171/SGX/MiCS-6814/1)
+
+Escolha ao menos um desses sensores e estude o seu datasheed para reproduzir o
+que seria uma mensagem MQTT gerada a partir dos dados aferidos por eles. Foque
+na reprodução fidedigna de **taxa de comunicação**, **unidade** e **ordem de
+grandeza** das medições. Utilize alguma técnica/biblioteca para que suas
+mensagens simuladas não sejam todas iguais (mas todas dentro das especificações
+do componente).
 
 Embora não haja o requerimento de criar testes automatizados, o simulador deve
 apresentar evidências objetivas de funcionamento.
