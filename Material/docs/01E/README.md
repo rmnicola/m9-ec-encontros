@@ -17,7 +17,16 @@ slug: /e1
 
 ## 2. Slides 
 
-<iframe
-src="https://docs.google.com/presentation/d/e/2PACX-1vTd4sYIEh4_ijNyabIcFsfL0z5IHxa9dIhT1_4RXJphaWxnefp0zhJNkFOeGlQwj6WBqhqxds2YQWdD/embed?start=false&loop=false&delayms=60000"
-frameborder="0" width="1280" height="749" allowfullscreen="true"
-mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<div style={{ textAlign: 'center' }}>
+    <iframe 
+        style={{
+            display: 'block',
+            margin: 'auto',
+            width: '100%',
+            height: '50vh',
+        }}
+        src="https://slides.com/rodrigomangoninicola/m9-ec-encontros/embed#/encontro1"
+        frameborder="0" 
+        allowFullScreen>
+    </iframe>
+</div>
