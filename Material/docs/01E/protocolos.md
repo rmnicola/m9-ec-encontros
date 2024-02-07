@@ -59,7 +59,6 @@ computação em sete camadas abstratas. Este modelo foi desenvolvido pela
 International Organization for Standardization (ISO) em 1984. Este modelo é
 composto por sete camadas, que podem ser vistas na imagem a seguir:
 
-
 <img 
   src="https://cecead.com/wp-content/uploads/2020/07/Modelo-OSI.png"
   alt="Camadas do modelo OSI" 
