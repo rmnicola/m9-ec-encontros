@@ -1,12 +1,11 @@
 name: Test Go TDD example
 
 on:
-  workflow_dispatch
-  #  push:
-  #  branches:
-  #    - 'dev'
-  #  paths:
-  #    - 'Exemplos/E02/goTdd/**'
+  push:
+    branches:
+      - 'dev'
+    paths:
+      - 'Exemplos/E02/goTdd/**'
 
 jobs:
   test:
