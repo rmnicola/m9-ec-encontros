@@ -156,3 +156,53 @@ Mais ou menos. Vamos por partes:
 
   Python é mais fácil que Go para muitas coisas, mas para TDD Go é **MUITO**
   mais fácil.
+
+## 3. Integrando os testes com o Github Actions
+
+Para integrar os testes feitos em Go com o Github Actions você não precisa
+fazer nada além de criar um novo arquivo de workflow. Vamos fazer um muito
+similar ao que fizemos para Python:
+
+```yaml showLineNumbers title=".github/workflows/test-go-tdd.yaml"
+name: Test Go TDD example
+
+on:
+  push:
+    branches:
+      - 'dev'
+    paths:
+      - 'Exemplos/E02/goTdd/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: './Exemplos/E02/goTdd'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Get dependencies
+        run: go mod tidy   
+      - name: Test
+        run: go test -v --cover .
+```
+
+Abaixo um screenshot da minha execução:
+
+<img 
+  src="img/workflow-tdd-2.png"
+  alt="Workflow de teste com Go" 
+  style={{ 
+    display: 'block',
+    marginLeft: 'auto',
+    maxHeight: '70vh',
+    marginRight: 'auto'
+  }} 
+/>
+<br/>
