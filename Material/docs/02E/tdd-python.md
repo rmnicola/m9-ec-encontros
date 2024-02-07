@@ -350,9 +350,129 @@ commands = mypy pyTdd
 
 Agora, ao rodarmos o `tox` vamos testar, também, a versão 3.9 do Python. Repita
 esse procedimento para todas as versões que estão em seu **target** de release.
+Depois de todo esse trabalho, saiba que você não precisa mais nem ativar sua
+**venv**. Basta rodar o `tox` na raíz do seu projeto que ele testa tudo.
+
+<img 
+  src="https://media1.tenor.com/m/HhR0mx8HrXsAAAAd/morel-hunter-x-hunter.gif"
+  alt="Camadas do modelo OSI" 
+  style={{ 
+    display: 'block',
+    marginLeft: 'auto',
+    maxHeight: '40vh',
+    marginRight: 'auto'
+  }} 
+/>
+<br/>
+
 
 ## 3. Integrando os testes com o Github Actions
 
 Agora que já fizemos a parte mais difícil, podemos criar um workflow no Github
 para rodar o `tox` automaticamente e testar nosso código de acordo com algum
-trigger que escolhermos.
+trigger que escolhermos. Para isso, primeiro precisamos adicionar ao `tox.ini`
+a configuração de **mais uma** ferramenta: o
+[tox-gh-actions](https://github.com/ymyzk/tox-gh-actions).
+
+```ini showLineNumbers title="tox.ini"
+[tox]
+envlist = 
+    py39
+    py310
+    style
+    type
+
+[gh-actions]
+python =
+    3.9: py39
+    3.10: py310, mypy, flake8
+
+[testenv]
+deps = pytest
+commands =
+    pytest
+
+[testenv:style]
+deps = flake8
+commands = flake8 pyTdd tests
+
+[testenv:type]
+deps = mypy
+commands = mypy pyTdd
+```
+
+A seguir, vamos criar um arquivo de **workflow** do Github Actions em
+`.github/workflows`.
+
+```yaml showLineNumbers title=".github/workflows/test-python-tdd.yaml"
+name: Test Python TDD example
+
+on:
+  push:
+    branches:
+      - 'dev'
+    paths:
+      - 'Exemplos/E02/pyTdd/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix:
+        python-version: ['3.9', '3.10']
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: './Exemplos/E02/pyTdd'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install tox tox-gh-actions
+      - name: Test with tox
+        run: tox
+```
+
+Vamos observar as novidades desse arquivo com relação ao último tutorial:
+
+* chave **paths** - com essa chave, podemos restringir o gatilho desse workflow
+  para apenas quando arquivos dentro do diretório `Exemplos/E02/pyTdd` são
+  modificados. Essa chave pode ser utilizada em conjunto com a chave
+  **branches**. Isso significa que, mesmo que haja mudanças no diretório
+  especificado, ainda precisa ser um `push` com target para a branch `dev`.
+* estratégia **matrix** - aqui podemos especificar diversas versões do Python
+  para rodar com os passos do workflow.
+
+:::note
+
+É possível usar a estratégia **matrix** também com sistemas operacionais. Fica
+de lição de casa caso queira testar o seu pacote não só em várias versões de
+Python, como também para vários sistemas operacionais (esteira CI/CD ficando
+pro, hein?)
+
+:::
+
+E pronto! Agora, basta fazer o `push` e observar os testes sendo executados
+automaticamente. Abaixo um screenshot da minha execução após escrever esse
+tutorial:
+
+<img 
+  src="img/workflow-tdd-1.png"
+  alt="Workflow de teste com Python" 
+  style={{ 
+    display: 'block',
+    marginLeft: 'auto',
+    maxHeight: '70vh',
+    marginRight: 'auto'
+  }} 
+/>
+<br/>
