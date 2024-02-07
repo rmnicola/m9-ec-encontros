@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from typing import List
 
 
 class Adder(BaseModel):
@@ -9,4 +8,3 @@ class Adder(BaseModel):
 
     def Add(self, *args: int) -> float:
         return sum(args)
-
