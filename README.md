@@ -1,7 +1,5 @@
-![GitHub issues](https://img.shields.io/github/issues/rmnicola/m9-ec-encontros)
-![GitHub forks](https://img.shields.io/github/forks/rmnicola/m9-ec-encontros)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/rmnicola/m9-ec-encontros/deploy.yaml)
 ![GitHub last commit](https://img.shields.io/github/last-commit/rmnicola/m9-ec-encontros)
+[![Deploy to GitHub Pages](https://github.com/rmnicola/m9-ec-encontros/actions/workflows/deploy.yaml/badge.svg)](https://github.com/rmnicola/m9-ec-encontros/actions/workflows/deploy.yaml)
 
 # Módulo de infraestrutura de cidades inteligentes
 
