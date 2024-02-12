@@ -1,5 +1,5 @@
 ---
-title: E1 - Modelos de comunicação e MQTT
+title: E1 - Modelos de comunicação
 sidebar_position: 4
 slug: /e1
 ---

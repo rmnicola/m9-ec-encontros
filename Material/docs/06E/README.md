@@ -1,10 +1,10 @@
 ---
-title: E3 - Segurança para IoT
-sidebar_position: 6
-slug: /e3
+title: E6 - Integração Metabase
+sidebar_position: 9
+slug: /e6
 ---
 
-# Material do encontro 3
+# Material do encontro 6
 
 ## 1. Roteiro 
 

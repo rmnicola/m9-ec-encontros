@@ -1,10 +1,10 @@
 ---
-title: E3 - Segurança para IoT
-sidebar_position: 6
-slug: /e3
+title: E8 - Segurança em base de dados
+sidebar_position: 10
+slug: /e8
 ---
 
-# Material do encontro 3
+# Material do encontro 8
 
 ## 1. Roteiro 
 

@@ -5,7 +5,7 @@ sidebar_class_name: ponderada
 slug: /ponderada1
 ---
 
-# Criação de um simulador de dispositivos IoT
+# Simulador de dispositivos IoT
 
 ## 1. Objetivo
 

@@ -1,10 +1,10 @@
 ---
-title: E3 - Segurança para IoT
-sidebar_position: 6
-slug: /e3
+title: E7 - Introdução ao MongoDB
+sidebar_position: 9
+slug: /e7
 ---
 
-# Material do encontro 3
+# Material do encontro 7
 
 ## 1. Roteiro 
 

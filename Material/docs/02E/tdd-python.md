@@ -1,5 +1,5 @@
 ---
-title: Implementação de testes em Python
+title: Testes em Python
 sidebar_position: 3
 sidebar_class_name: autoestudo
 slug: /tdd-python
@@ -118,6 +118,7 @@ classifiers =
     Programming Language :: Python :: 3
     Operating System :: OS Independent
 license_files = LICENSE.txt
+
 
 [options]
 zip_safe = False

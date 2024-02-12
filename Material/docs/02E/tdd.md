@@ -16,7 +16,22 @@ desejada ou uma nova funcionalidade, produzir o mínimo de código necessário
 para passar o teste, e então refatorar o código para atender aos padrões de
 qualidade.
 
-### O Ciclo TDD
+## 1. O Ciclo TDD
+
+
+<img 
+  src="https://miro.medium.com/v2/resize:fit:700/0*0JHElimbtRqPc8SA.png"
+  alt="Camadas do modelo OSI" 
+  style={{ 
+    display: 'block',
+    marginLeft: 'auto',
+    maxHeight: '40vh',
+    marginRight: 'auto'
+  }} 
+/>
+<br/>
+
+
 
 O ciclo TDD é frequentemente descrito como "Vermelho-Verde-Refatorar",
 refletindo seus três estágios principais:
@@ -34,7 +49,7 @@ refletindo seus três estágios principais:
    alterar seu comportamento. Isso pode incluir remover duplicações, melhorar a
    clareza e aplicar padrões de design de software.
 
-### Benefícios do TDD
+## 2. Benefícios do TDD
 
 - **Melhoria da Qualidade do Código**: TDD ajuda a garantir que o software
   tenha uma cobertura de teste alta, o que pode reduzir a quantidade de bugs e
@@ -49,7 +64,7 @@ refletindo seus três estágios principais:
   pode acelerar o desenvolvimento ao reduzir o tempo gasto com depuração e
   correção de bugs em estágios posteriores.
 
-### Desafios do TDD
+## 3. Desafios do TDD
 
 - **Curva de Aprendizado**: Para equipes não familiarizadas com TDD, pode haver
   uma curva de aprendizado inicial significativa.
