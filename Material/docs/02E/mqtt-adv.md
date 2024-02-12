@@ -9,7 +9,7 @@ import Admonition from '@theme/Admonition';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# MQTT Parte 2 (QoS e persistência)
+# MQTT - Parte 2 (QoS e sessões persistentes)
 
 ## 1. Quality of Service
 
@@ -211,102 +211,3 @@ De modo geral, deve-se usar sessões persistentes quando:
   informações que são críticas para algum outro sistema, sessões persistentes
   garantem que essas mensagens fiquem enfileiradas mesmo quando o cliente está
   offline.
-
-## 3. Mensagem retidas
-
-<Admonition 
-    type="info" 
-    title="Autoestudo">
-
-<div style={{ textAlign: 'center' }}>
-    <iframe 
-        style={{
-            display: 'block',
-            margin: 'auto',
-            width: '100%',
-            height: '50vh',
-        }}
-        src="https://www.youtube.com/embed/Ct5s4gXefn4" 
-        frameborder="0" 
-        allowFullScreen>
-    </iframe>
-</div>
-
-</Admonition>
-
-Mensagens retidas nada mais são do que mensagens que ficam "pinadas" ao tópico.
-Apenas uma mensagem pode ser retida por tópico e ela geralmente serve para
-garantir que os inscritos consigam ver o último estado conhecido daquele
-tópico.
-
-## 4. Last will e Testament
-
-<Admonition 
-    type="info" 
-    title="Autoestudo">
-
-<div style={{ textAlign: 'center' }}>
-    <iframe 
-        style={{
-            display: 'block',
-            margin: 'auto',
-            width: '100%',
-            height: '50vh',
-        }}
-        src="https://www.youtube.com/embed/dNy9GEXngoE" 
-        frameborder="0" 
-        allowFullScreen>
-    </iframe>
-</div>
-
-</Admonition>
-
-A mensagem de testamento (LWT) é um caso particular da mensagem retida, pois
-ela é uma mensagem que o cliente envia com antecedência ao broker. O broker,
-por sua vez, só dispara essa mensagem como uma mensagem retida no tópico nos
-seguintes casos:
-
-1. **Falha de I/O de Rede**
-2. **Cliente não se comunica dentro do período de Keep Alive**
-3. **Cliente fecha a conexão sem o pacote DISCONNECT**
-4. **Conexão fechada por falha de protocolo**
-
-Basicamente, essa é uma forma de garantir que o sistema como um todo seja
-notificado em caso de falhas de comunicação de um cliente, o que pode ser útil
-para ativar rotinas de mitigação/fail safe.
-
-## 5. Keep alive e client takeover
-
-<Admonition 
-    type="info" 
-    title="Autoestudo">
-
-<div style={{ textAlign: 'center' }}>
-    <iframe 
-        style={{
-            display: 'block',
-            margin: 'auto',
-            width: '100%',
-            height: '50vh',
-        }}
-        src="https://www.youtube.com/embed/2EsrWOFPmc4" 
-        frameborder="0" 
-        allowFullScreen>
-    </iframe>
-</div>
-
-</Admonition>
-
-Keep alive nada mais é do que um período de tempo negociado entre o broker e o
-cliente (é um parâmetro do construtor de um cliente com Paho, por exemplo) para
-que o cliente mande um pacote **PINGREQ** e o broker responda com um
-**PINGRESP**.
-
-Client takeover é uma ferramenta de monitoramento de portas TCP. Quando um
-cliente se desconecta, teoricamente o protocolo TCP prevê que seja possível que
-a outra parte envolvida na comunicação seja notificada. Na prática, é possível
-que a conexão fique só 'meio aberta', o que faz com que a porta fique ocupada
-em caso de tentativas de reconectar-se por alguma das partes. O Client takeover
-é um mecanismo onde o broker fica resopnsável por monitorar a porta TCP e, caso
-haja uma tentativa de reconexão por parte de um cliente, o broker fecha a
-conexão antiga para garantir que o cliente consiga voltar.
