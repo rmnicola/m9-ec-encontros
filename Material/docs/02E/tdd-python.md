@@ -119,6 +119,7 @@ classifiers =
     Operating System :: OS Independent
 license_files = LICENSE.txt
 
+
 [options]
 zip_safe = False
 include_package_data = True
