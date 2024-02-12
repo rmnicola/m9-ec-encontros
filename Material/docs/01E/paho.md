@@ -262,9 +262,9 @@ go mod tidy
 Para instalar as dependências e
 
 ```bash
-go mod run publisher.go
+go run publisher.go
 ```
 
 ```bash 
-go mod run subscriber.go
+go run subscriber.go
 ```
