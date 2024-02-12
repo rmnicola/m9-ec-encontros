@@ -1,5 +1,5 @@
 ---
-title: E4 - Aprofundamento broker MQTT
+title: E4 - Introdução ao HiveMQ
 sidebar_position: 7
 slug: /e4
 ---
