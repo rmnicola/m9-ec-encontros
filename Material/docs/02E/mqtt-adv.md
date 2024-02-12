@@ -9,7 +9,7 @@ import Admonition from '@theme/Admonition';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Outros tópicos de MQTT
+# MQTT Parte 2 (QoS e persistência)
 
 ## 1. Quality of Service
 

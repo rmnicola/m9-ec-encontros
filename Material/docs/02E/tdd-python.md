@@ -1,5 +1,5 @@
 ---
-title: Implementação de testes em Python
+title: Testes em Python
 sidebar_position: 3
 sidebar_class_name: autoestudo
 slug: /tdd-python

@@ -1,5 +1,5 @@
 ---
-title: E3 - Segurança da informação para IoT
+title: E3 - Segurança para IoT
 sidebar_position: 6
 slug: /e3
 ---

@@ -1,5 +1,5 @@
 ---
-title: Implementação de testes em Go
+title: Testes em Go
 sidebar_position: 4
 sidebar_class_name: autoestudo
 slug: /tdd-go
