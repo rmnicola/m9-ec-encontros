@@ -70,7 +70,7 @@ func main() {
 }
 ```
 
-## 4. Publisher
+## 3. Publisher
 
 ```go showLineNumbers title="publisher.go"
 package main
