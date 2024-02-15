@@ -3,7 +3,7 @@ import time
 import json
 
 # Configuração do cliente
-client = mqtt.Client("python_publisher")
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, "python_publisher")
 
 # Conecte ao broker
 client.connect("localhost", 1891, 60)

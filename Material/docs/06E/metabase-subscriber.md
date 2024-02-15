@@ -39,7 +39,7 @@ password = os.getenv("HIVE_PSWD")
 conn = sqlite3.connect('dados.db')
 cursor = conn.cursor()
 
-def on_connect(client, userdata, flags, rc, properties=None):
+def on_connect(client, userdata, flags, rc, properties):
     print(f"CONNACK received with code {rc}")
     client.subscribe(topic, qos=1)
 
@@ -50,7 +50,7 @@ def on_message(client, userdata, msg):
     conn.commit()
 
 # Instanciação do cliente
-client = paho.Client("Subscriber", protocol=paho.MQTTv5)
+client = paho.Client(paho.CallbackAPIVersion.VERSION2, "Subscriber", protocol=paho.MQTTv5)
 client.on_connect = on_connect
 
 # Configurações de TLS

@@ -5,14 +5,16 @@ def on_message(client, userdata, message):
     print(f"Recebido: {message.payload.decode()} no tópico {message.topic}")
 
 # Callback para quando o cliente recebe uma resposta CONNACK do servidor.
-def on_connect(client, userdata, flags, rc):
-    print("Conectado com código de resultado "+str(rc))
-    # Inscreva no tópico aqui, ou se perder a conexão e se reconectar, então as
-    # subscrições serão renovadas.
-    client.subscribe("test/topic")
+def on_connect(client, userdata, flags, reason_code, properties):
+    if reason_code == 0:
+        print("Conexão bem sucedida!")
+        client.subscribe("test/topic")
+    else:
+        print(f"Conexão falhou! Código {reason_code}")
+        exit(reason_code)
 
 # Configuração do cliente
-client = mqtt.Client("python_subscriber")
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, "python_subscriber")
 client.on_connect = on_connect
 client.on_message = on_message
 
