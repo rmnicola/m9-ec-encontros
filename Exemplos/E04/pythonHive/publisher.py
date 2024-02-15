@@ -12,10 +12,10 @@ topic = "my/test/topic"
 username = os.getenv("HIVE_USER")
 password = os.getenv("HIVE_PSWD")
 
-def on_connect(client, userdata, flags, rc, properties=None):
-    print(f"CONNACK received with code {rc}")
+def on_connect(client, userdata, flags, reason_code, properties):
+    print(f"CONNACK received with code {reason_code}")
 
-def on_publish(client, userdata, mid, properties=None):
+def on_publish(client, userdata, mid, reason_code, properties):
     print(f"Mid: {mid}")
 
 # print message, useful for checking if it was successful
@@ -23,7 +23,8 @@ def on_message(client, userdata, msg):
     print(f"{msg.topic} (QoS: {msg.qos}) - {msg.payload.decode('utf-8')}")
 
 # Instanciação do cliente
-client = paho.Client("Publisher", protocol=paho.MQTTv5)
+client = paho.Client(paho.CallbackAPIVersion.VERSION2, "Publisher",
+                     protocol=paho.MQTTv5)
 client.on_connect = on_connect
 
 # Configurações de TLS
