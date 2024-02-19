@@ -131,6 +131,19 @@ cadastrar novos usuários e controlar o nível de autorização de cada um deles
 
 ## 4. Testando o seu cluster
 
+:::warning
+
+Há uma diferença entre o **Windows** e o Ubuntu que faz com que o mosquitto
+**não consiga se comunicar** com o broker do **HiveMQ** sem a instalação de um
+certificado de segurança. Portanto, se estiver usando Windows (shame on
+you...), mude a ferramenta de teste para o [MQTT
+Cli](https://www.hivemq.com/blog/mqtt-cli/).
+
+O tópico reportando o erro está nesse
+[link](https://community.hivemq.com/t/failing-with-connection-return-codes-7/1673/2).
+
+:::
+
 Para testar o cluster criado, vamos tentar acessá-lo utilizando as credenciais
 criadas no passo anterior e o **mosquitto** como cliente. Para isso, rode:
 
