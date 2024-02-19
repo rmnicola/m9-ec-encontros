@@ -8,42 +8,47 @@ slug: /ponderada4
 # Integração simulador com HiveMQ
 
 ## 1. Enunciado
-<img 
-  src="https://i.redd.it/q0dd3k02unqb1.gif"
-  alt="Boot process" 
-  style={{ 
-    display: 'block',
-    marginLeft: 'auto',
-    maxHeight: '30vh',
-    marginRight: 'auto'
-  }} 
-/>
-<br/>
 
+Nessa atividade, deve-se desenvolver a integração entre o simulador
+desenvolvido nas duas primeiras atividades ponderadas e um cluster configurado
+no [HiveMQ](https://www.hivemq.com/). Para tal, deve-se garantir que o
+simulador é capaz de se comunicar utilizando autenticação em camada de
+transporte (TLS).
 
 ## 2. Padrão de entrega
-<img 
-  src="https://i.redd.it/q0dd3k02unqb1.gif"
-  alt="Boot process" 
-  style={{ 
-    display: 'block',
-    marginLeft: 'auto',
-    maxHeight: '30vh',
-    marginRight: 'auto'
-  }} 
-/>
-<br/>
+
+:::warning
+
+Esses são os critérios mínimos para que eu considere a atividade como entregue.
+Fique atento, pois o não cumprimento de qualquer um desses critérios pode, no
+melhor dos casos, gerar um desconto de nota e, no pior deles, invalidar a
+atividade.
+
+:::
+
+1. A atividade deve ser feita em um repositório aberto no github. Seu link deve
+   ser fornecido no card da adalove;
+2. No README do repositório deve ter instruções claras de como instalar e rodar
+   o sistema criado, comandos em blocos de código e uma expliação sucinta do
+   que fazem;
+3. Ainda no README, deve haver um vídeo gravado demonstrando plenamente o
+   funcionamento do sistema criado;
+4. O prazo para a entrega desta atividade é até o dia 26/02/2024 às 23h59min.
 
 
 ## 3. Padrão de qualidade
-<img 
-  src="https://i.redd.it/q0dd3k02unqb1.gif"
-  alt="Boot process" 
-  style={{ 
-    display: 'block',
-    marginLeft: 'auto',
-    maxHeight: '30vh',
-    marginRight: 'auto'
-  }} 
-/>
-<br/>
+
+**[0,0 - 3,0]**
+A integração com o cluster está implementada de forma substancialmente
+incorreta. Não há troca de informações com o broker.
+
+**[3,0 - 7,0]**
+Há evidências visuais do funcionamento da integração, mas não há procedimentos
+de teste ou testes automatizados para validar o funcionamento da integração.
+
+**[7,0 - 9,0]**
+Há evidências do funcionamento e há procedimentos de teste que validam ao menos
+parcialmente a integração.
+
+**[9,0 - 10,0]**
+Há evidências do funcionamento e testes automatizados que validam a integração.
