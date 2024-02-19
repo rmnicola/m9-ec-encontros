@@ -181,9 +181,9 @@ nota e, no pior caso, invalidar a entrega por completo. Fique atento!
 1. O texto desenvolvido pelo grupo deve estar disponível em uma página estática
    gerada pelo framework Docusaurus. Para tal, deve haver um diretório no
    repositório denominado `docs`, onde ficará a raíz do Docusaurus;
-2. A documentação da sprint 1 deve estar inteiramente contida em uma seção
-   denominada `Sprint 1`. Cada um dos artefatos deve ter sua descrição contida
-   em uma página ou subseção dentro da seção `Sprint 1`.
+2. A documentação da sprint 2 deve estar inteiramente contida em uma seção
+   denominada `Sprint 2`. Cada um dos artefatos deve ter sua descrição contida
+   em uma página ou subseção dentro da seção `Sprint 2`.
 3. As figuras utilizadas no documento devem sempre ser referenciadas no texto,
    com descrições textuais que estimulem a coesão entre o que é apresentado
    visualmente e o restante do texto; e 
@@ -199,7 +199,6 @@ nota e, no pior caso, invalidar a entrega por completo. Fique atento!
 A qualidade textual à qual esse padrão de qualidade se refere diz respeito ao
 que foi documentado no decorrer da sprint atual. No entanto, é prerrogativa do
 professor orientador descontar nota por defeitos que persistiram de um sprint
-para outro.
 
 :::
 
@@ -261,3 +260,4 @@ Instruções completas, com exemplos mais comuns, comandos detalhados de execuç
 e informações robustas de compatiblidade.
 Requisitos contextualizados, com métricas bem definidas e com o planejamento de
 testes devidamente documentado e coerente com os requisitos.
+para outro.
