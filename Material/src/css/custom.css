@@ -64,3 +64,9 @@ li > a.menu__link {
   padding-right: 0.5rem;
   content: url(../icons/artefato.svg);
 }
+
+.superpond a::before {
+  padding-right: 0.5rem;
+  height: 0.3 vh;
+  content: url(../icons/superpond.svg);
+}
