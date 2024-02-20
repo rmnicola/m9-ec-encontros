@@ -113,7 +113,100 @@ docker-compose -p mqtt5 up -d
 docker ps
 ```
 
-> Observação: Anote o `Container ID`, utilizaremos em breve.
+11. Com o contêiner funcionando, vamos acessar a shell dele:
+
+```
+sudo docker exec -it <Container ID> sh
+```
+
+12. Vamos fazer o Subscribe em um tópico (sem autenticação):
+
+```
+mosquitto_sub -v -t 'hello/topic'
+```
+
+> **Curiosidade:** Já tentou fazer o Subscribe no tópico #? (sim, apenas a
+> hashtag). O que acontece?
+
+13. Abra outro terminal, entre no contêiner e vamos fazer o Publish:
+
+```
+mosquitto_pub -t 'hello/topic' -m 'hello MQTT World'
+```
+
+> **OBS:** Caso dê erro de não encontrar os executáveis acima ou quer testar
+> "por fora" do contêiner em ambiente Linux, basta instalar o
+> `mosquitto-clients` por meio do seguinte comando:
+
+```
+sudo apt install mosquitto-clients
+```
+
+> **Pergunta:** Sem autenticação (repare que a variável `allow_anonymous` está
+> como `true`), como a parte de confidencialidade pode ser violada?
+
+14. Vamos implementar a camada de autenticação, começando por reabrir o arquivo
+    `config/mosquitto.conf` e modificar a primeira linha, trocando a variável
+    `allow_anonymous` para `false`.
+
+15. Dentro do contêiner (acesse a shell dele), vamos criar o usuário com o
+    seguinte comando:
+
+```
+mosquitto_passwd -c /mosquitto/config/pwfile <username>
+```
+
+> **OBS:** O comando pedirá o password que deseja para o `username` informado.
+
+16. Reinicie o contêiner para refletir as novas configurações:
+
+```
+docker restart <Container ID>
+```
+
+17. A partir de agora, as ações de Subscribe / Publish terão que passar por uma
+    camada de autenticação para serem efetivadas:
+
+```
+mosquitto_sub -v -t 'hello/topic' -u <username> -P <password>
+
+mosquitto_pub -t 'hello/topic' -m 'hello MQTT World' -u <username> -P <password>
+```
+
+> **Opcional:** Se quiser testar por fora utilizando os seguintes comandos de
+> Subscribe / Publish:
+
+```
+mosquitto_sub -v -L mqtt://<username>:<password>@localhost/hello/topic
+
+mosquitto_pub -L mqtt://<username>:<password>@localhost/hello/topic -m 'hello MQTT World'
+```
+
+**Perguntas:**
+
+Agora que temos um broker remoto ([HiveMQ WebSocket Client para
+Web](https://www.hivemq.com/demos/websocket-client/), por exemplo) e um broker
+local (no contêiner), durante a execução do roteiro acima, nas seções de
+perguntas é possível identificar situações pela qual uma vuln pode ser
+explorada ou 'exploitada'.
+
+Colocarei mais algumas perguntas para pensar em mais possibilidades (lembra da
+Mentalidade Hacker?).
+
+Dá para utilizar tanto o broker remoto quanto o broker local para conduzir as
+simulações.
+
+> **Pergunta:** Tente simular uma violação do pilar de Confidencialidade.
+
+> **Pergunta:** Tente simular uma violação do pilar de Integridade.
+
+> **Pergunta:** Tente simular uma violação do pilar de Disponibilidade. **Esse
+> tem um truque!**
+
+> **Dica:** Lembre-se dos conceitos do CIA Triad, pode ajudar bastante.
+
+> **Dica:** Guarde as evidências para o relatório. Observação: Anote o
+> `Container ID`, utilizaremos em breve.
 
 ## 3. Slides 
 
