@@ -8,28 +8,23 @@ slug: /e4
 
 ## 1. Roteiro 
 
-<img 
-  src="https://i.redd.it/q0dd3k02unqb1.gif"
-  alt="Boot process" 
-  style={{ 
-    display: 'block',
-    marginLeft: 'auto',
-    maxHeight: '30vh',
-    marginRight: 'auto'
-  }} 
-/>
-<br/>
+1. Tópicos intermediários/avançados MQTT
+2. Segurança em brokers MQTT
+3. Apresentação do HiveMQ
+4. Ponderada em sala
 
 ## 2. Slides 
 
-<img 
-  src="https://i.redd.it/q0dd3k02unqb1.gif"
-  alt="Boot process" 
-  style={{ 
-    display: 'block',
-    marginLeft: 'auto',
-    maxHeight: '30vh',
-    marginRight: 'auto'
-  }} 
-/>
-<br/>
+<div style={{ textAlign: 'center' }}>
+    <iframe 
+        style={{
+            display: 'block',
+            margin: 'auto',
+            width: '100%',
+            height: '50vh',
+        }}
+        src="https://slides.com/rodrigomangoninicola/m9-ec-encontros/embed#/encontro4"
+        frameborder="0" 
+        allowFullScreen>
+    </iframe>
+</div>
