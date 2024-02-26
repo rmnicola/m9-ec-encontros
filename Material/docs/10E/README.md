@@ -1,7 +1,7 @@
 ---
 title: E10 - Integração MongoDB Atlas
 sidebar_position: 11
-slug: /e9
+slug: /e10
 ---
 
 # Material do encontro 10
