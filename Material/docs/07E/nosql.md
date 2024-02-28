@@ -5,80 +5,129 @@ sidebar_class_name: autoestudo
 slug: /nosql
 ---
 
+import Admonition from '@theme/Admonition';
+
 # Bases de dados NoSQL
+
+<Admonition 
+    type="info" 
+    title="Autoestudo">
+
+<div style={{ textAlign: 'center' }}>
+    <iframe 
+        style={{
+            display: 'block',
+            margin: 'auto',
+            width: '100%',
+            height: '50vh',
+        }}
+        src="https://www.youtube.com/embed/0buKQHokLK8" 
+        frameborder="0" 
+        allowFullScreen>
+    </iframe>
+</div>
+
+</Admonition>
+
 
 ## 1. SQL vs NoSQL
 
 Bancos de dados SQL (Structured Query Language) e NoSQL (Not Only SQL) são dois
 tipos principais de sistemas de gerenciamento de banco de dados que são usados
-para armazenar e gerenciar dados. Eles têm diferenças fundamentais em termos de
-estrutura, modelo de dados, escalabilidade, desempenho e casos de uso. Vamos
-explorar essas diferenças:
+para armazenar e gerenciar dados. A principal diferença entre esses dois tipos
+de banco de dados é a existência de **relações** entre os dados armazenados. Os
+bancos NoSQL **não criam relações** entre os dados. Em termos práticos, essa
+troca impacta os seguintes aspectos do banco de dados:
 
-### 1.1. Modelo de dados
-   - **SQL**: Utiliza um modelo de dados relacional, onde os dados são
-     organizados em tabelas com linhas e colunas. As tabelas são relacionadas
-     entre si através de chaves estrangeiras. Este modelo é ideal para dados
-     estruturados e relações complexas.
-   - **NoSQL**: Adota uma variedade de modelos de dados, incluindo documentos
-     (MongoDB), chave-valor (Redis), colunas largas (Cassandra) e grafos
-     (Neo4j). Esses modelos são mais flexíveis e adequados para armazenar dados
-     não estruturados ou semi-estruturados.
+1. Modelagem de dados
+2. Escalabilidade
+3. Transações
+4. Consultas
 
-### 1.2. Esquema
-   - **SQL**: Possui um esquema rígido, o que significa que a estrutura das
-     tabelas e os tipos de dados das colunas devem ser definidos antes de
-     inserir os dados. Alterações no esquema podem ser trabalhosas.
-   - **NoSQL**: Geralmente tem um esquema flexível ou sem esquema, permitindo a
-     adição de novos campos sem a necessidade de modificar o esquema existente.
-     Isso oferece maior flexibilidade para lidar com dados variáveis.
 
-### 1.3. Escalabilidade
-   - **SQL**: Tradicionalmente, os bancos de dados SQL são escalados
-     verticalmente, o que significa que você aumenta a capacidade do servidor
-     (CPU, RAM, armazenamento) para lidar com mais carga. Isso pode se tornar
-     caro e ter limitações físicas.
-   - **NoSQL**: Projetados para escalabilidade horizontal, os bancos de dados
-     NoSQL podem ser distribuídos em vários servidores ou nós, facilitando o
-     aumento da capacidade de maneira mais econômica e flexível.
+### 1.1. Modelagem de dados
+
+<img 
+  src="https://www.astera.com/wp-content/uploads/2023/06/MicrosoftTeams-image-39.png"
+  alt="Relações DBs" 
+  style={{ 
+    display: 'block',
+    marginLeft: 'auto',
+    maxHeight: '30vh',
+    marginRight: 'auto'
+  }} 
+/>
+<br/>
+
+Os bancos **SQL** utilizam um modelo de dados relacional, onde os dados são
+organizados em **tabelas** com **linhas** e **colunas**. As tabelas são relacionadas entre
+si através de **chaves estrangeiras**. Este modelo é ideal para dados estruturados
+e relações complexas. O seu esquema é rígido, o que significa que a estrutura
+das tabelas e os tipos de dados das colunas devem ser definidos antes de
+inserir os dados. Alterações no esquema podem ser trabalhosas.
+
+Em comparação, os bancos **NoSQL** adotam uma variedade de modelos de dados,
+incluindo **documentos** (MongoDB), **chave-valor** (Redis), **colunas largas**
+(Cassandra) e **grafos** (Neo4j). Esses modelos são mais flexíveis e adequados
+para armazenar dados não estruturados ou semi-estruturados. Em termos gerais,
+os bancos NoSQL apresentam os dados em um formato livre e há algum **mecanismo
+de indexação** para tornar as operações de leitura mais performáticas. Bancos
+NoSQL apresentam esquemas flexíveis ou nenhum esquema, o que significa que
+costuma ser muito simples adicionar novos campos.
+
+### 1.2. Escalabilidade
+
+
+<img 
+  src="https://miro.medium.com/v2/resize:fit:1122/1*gee5Zkih2dZ7tYWRgmRbkw.png"
+  alt="Escalabilidade" 
+  style={{ 
+    display: 'block',
+    marginLeft: 'auto',
+    maxHeight: '50vh',
+    marginRight: 'auto'
+  }} 
+/>
+<br/>
+
+Por existir relações entre os dados aramzenados, os bancos **SQL** incorrem
+comumente sobre o problema de uma operação futura depender de uma operação
+anterior. O efeito prático desse problema é que é muito **difícil paralelizar
+consultar SQL**. Com efeito, o tipo de **escalabilidade** possível para esse
+tipo de banco de dados é a **vertical** (mais poder de processamento para um
+mesmo thread). É notório que esse tipo de escalabilidade tem um aumento de
+custo exponencial conforme aumentamos o tamanho do problema.
+
+Enquanto isso, os bancos **NoSQL** gozam da possibilidade de escalar de forma
+horizontal, pois suas consultas não tem relação nenhuma uma com a outra. É
+trivial, inclusive, espalhar um banco **NoSQL** em diversos **servidores
+diferentes**.
 
 ### 1.4. Transações
-   - **SQL**: Oferece suporte a transações ACID (Atomicidade, Consistência,
-     Isolamento, Durabilidade), que são importantes para garantir a integridade
-     dos dados em operações que envolvem múltiplas etapas.
-   - **NoSQL**: Muitos bancos de dados NoSQL priorizam a disponibilidade e a
-     particionabilidade (teorema CAP) em detrimento da consistência estrita,
-     seguindo o modelo BASE (Basicamente Disponível, Estado Suave, Eventual
-     Consistência). No entanto, alguns sistemas NoSQL começaram a oferecer
-     suporte a transações ACID.
 
-### 1.5. Consultas
-   - **SQL**: Utiliza uma linguagem de consulta estruturada (SQL) para realizar
-     consultas complexas, incluindo junções, agrupamentos e operações de
-     agregação.
-   - **NoSQL**: As consultas variam de acordo com o tipo de banco de dados
-     NoSQL e podem ser menos complexas que as do SQL. Por exemplo, os bancos de
-     dados de documentos usam consultas baseadas em JSON, enquanto os bancos de
-     dados de grafos usam linguagens específicas para consultas de grafos.
+<img 
+  src="https://systemdesignbasic.files.wordpress.com/2020/06/asidvsbase.png"
+  alt="ACID vs BASE" 
+  style={{ 
+    display: 'block',
+    marginLeft: 'auto',
+    maxHeight: '30vh',
+    marginRight: 'auto'
+  }} 
+/>
+<br/>
 
-### 1.6. Casos de Uso
-   - **SQL**: Ideal para aplicações que requerem transações complexas, como
-     sistemas de gerenciamento de relacionamento com o cliente (CRM), sistemas
-     de gerenciamento de recursos empresariais (ERP) e sistemas bancários.
-   - **NoSQL**: Adequado para aplicações que lidam com grandes volumes de dados
-     não estruturados ou semi-estruturados, como big data, análise de dados em
-     tempo real, armazenamento de dados de redes sociais e sistemas de
-     recomendação.
+Os bancos **SQL** têm como o padrão de ouro transações **ACID**, enquanto a
+maioria dos bancos **NoSQL** trabalham com transações **BASIC**, mas, o que
+isso significa?
 
-## 2. ACID vs BASE
+#### 1.4.1. ACID vs BASE
 
 ACID e BASE são dois conjuntos de propriedades que garantem a confiabilidade
 das transações em sistemas de banco de dados. Eles representam abordagens
 diferentes para lidar com a consistência e a disponibilidade dos dados.
 
-### 2.1. ACID 
-
-ACID (Atomicidade, Consistência, Isolamento, Durabilidade):
+**ACID (Atomicidade, Consistência, Isolamento, Durabilidade):**
 
 1. **Atomicidade**: Garante que todas as operações em uma transação sejam
    concluídas com sucesso ou nenhuma seja aplicada. É tudo ou nada.
@@ -96,9 +145,7 @@ Os sistemas de banco de dados que seguem o modelo ACID, como os bancos de dados
 relacionais SQL, são ideais para aplicações que exigem alta consistência e
 integridade dos dados, como sistemas financeiros e de contabilidade.
 
-### 2.2. BASE 
-
-BASE (Basicamente Disponível, Estado Suave, Eventual Consistência):
+**BASE (Basicamente Disponível, Estado Suave, Eventual Consistência):**
 
 1. **Basicamente Disponível**: O sistema garante a disponibilidade dos dados,
    mesmo na presença de falhas, mas pode não garantir a consistência imediata
@@ -115,7 +162,44 @@ consistência imediata em favor da disponibilidade e da tolerância a partiçõe
 Eles são adequados para aplicações que podem tolerar alguma inconsistência
 temporária, como redes sociais e sistemas de análise de big data.
 
+### 1.5. Consultas
+
+Os bancos **SQL** utilizam uma linguagem de consulta estruturada para realizar
+as consultas aos dados do banco (SQL). A vantagem desse modelo é que não há
+muita variação entre a performance de cada tipo de consulta. A desvantagem é
+que, em termos gerais, são consultas que **não escalam bem**.
+
+Em comparação, os bancos **NoSQL** variam amplamente no tipo de consulta feita.
+Basicamente, para cada tipo de banco de dados **NoSQL** há um tipo de consulta
+diferente. A vantagem dessa estratégia é poder melhorar a performance,
+escalabilidade e facilidade de acesso para determinados tipos de consultas. A
+desvantagem é que consultas que não se adequam ao tipo de banco de dados
+utilizado **podem ter uma perda de performance** significativa, tornando-as
+desvantajosas mesmo em comparação com o **SQL**.
+
+### 1.6. Casos de Uso
+   - **SQL**: Ideal para aplicações que requerem transações complexas, como
+     sistemas de gerenciamento de relacionamento com o cliente (CRM), sistemas
+     de gerenciamento de recursos empresariais (ERP) e sistemas bancários.
+   - **NoSQL**: Adequado para aplicações que lidam com grandes volumes de dados
+     não estruturados ou semi-estruturados, como big data, análise de dados em
+     tempo real, armazenamento de dados de redes sociais e sistemas de
+     recomendação.
+
+
 ## 3. Tipos de bancos NoSQL
+
+<img 
+  src="https://miro.medium.com/v2/resize:fit:933/1*lhcHd2uARrbVm7TN0jhSlg.jpeg"
+  alt="Tipos bancos NoSQL" 
+  style={{ 
+    display: 'block',
+    marginLeft: 'auto',
+    maxHeight: '30vh',
+    marginRight: 'auto'
+  }} 
+/>
+<br/>
 
 Os bancos de dados NoSQL são projetados para armazenar e gerenciar grandes
 volumes de dados distribuídos de maneira não relacional. Eles são categorizados
