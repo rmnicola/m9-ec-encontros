@@ -1,5 +1,5 @@
 ---
-title: E9 - Introdução ao MongoDB Atlas
+title: E9 - Introdução ao Atlas
 sidebar_position: 11
 slug: /e9
 ---
