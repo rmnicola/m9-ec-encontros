@@ -1,30 +1,3 @@
----
-title: MongoDB Atlas com Go
-sidebar_position: 3
-sidebar_class_name: opcional
-slug: /altas-go
----
-
-import Admonition from '@theme/Admonition';
-
-# Utilizando o MongoDB Atlas c/ Go
-
-Para interagir com um banco de dados MongoDB Atlas usando Go, você pode usar o
-pacote `mongo-go-driver`. Abaixo está um exemplo simples que mostra como se
-conectar a um cluster do MongoDB Atlas, inserir um documento em uma coleção e
-recuperar documentos da coleção.
-
-Primeiro, certifique-se de ter o `mongo-go-driver` instalado. Se não tiver,
-você pode instalá-lo usando o seguinte comando após copiar o código abaixo no
-seu módulo:
-
-```bash
-go mod tidy
-```
-
-Em seguida, use o seguinte código Go como exemplo:
-
-```go
 package main
 
 import (
@@ -72,11 +45,3 @@ func main() {
 	}
 	fmt.Println("Pinged your deployment. You successfully connected to MongoDB!")
 }
-```
-
-:::warning
-
-Note que, para rodar o código acima, você precisa configurar um `.env` e usar a
-biblioteca `godotenv`.
-
-:::

@@ -9,6 +9,8 @@ import Admonition from '@theme/Admonition';
 
 # Utilizando o MongoDB Atlas c/ Python
 
+## 1. Utilizando pymongo
+
 Para interagir com um banco de dados MongoDB Atlas usando Python, você pode
 usar a biblioteca `pymongo`. Abaixo está um exemplo simples que mostra como se
 conectar a um cluster do MongoDB Atlas, inserir um documento em uma coleção e
@@ -23,32 +25,66 @@ pip install pymongo
 
 Em seguida, use o seguinte código Python como exemplo:
 
-```python
-from pymongo import MongoClient
+```python showLineNumbers title="python_atlas.py"
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+import os
+from dotenv import load_dotenv
 
-# Substitua 'your_connection_string' pela sua string de conexão do MongoDB
-# Atlas
-connection_string = 'your_connection_string'
+# Carregar variáveis de ambiente do arquivo .env
+load_dotenv()
 
-# Conectar ao cluster do MongoDB Atlas
-client = MongoClient(connection_string)
+# Recuperar usuário e senha do arquivo .env
+mongo_user = os.getenv('MONGO_USER')
+mongo_password = os.getenv('MONGO_PASSWORD')
 
-# Selecionar o banco de dados
-db = client['nome_do_banco_de_dados']
+uri = f"mongodb+srv://{mongo_user}:{mongo_password}@cluster-teste.q2pkwbd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-teste"
 
-# Selecionar a coleção
-collection = db['nome_da_coleção']
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
 
-# Inserir um documento na coleção
-document = {'nome': 'João', 'idade': 30}
-collection.insert_one(document)
-
-# Recuperar documentos da coleção
-for doc in collection.find():
-    print(doc)
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 ```
 
-Certifique-se de substituir `'your_connection_string'` pela sua string de
-conexão do MongoDB Atlas, que você pode obter do painel do Atlas. Além disso,
-substitua `'nome_do_banco_de_dados'` e `'nome_da_coleção'` pelos nomes
-apropriados do seu banco de dados e coleção, respectivamente.
+:::warning
+
+Note que, para rodar o código acima, você precisa configurar um `.env` e usar a
+biblioteca `pydotenv`.
+
+:::
+
+## 2. Utilizando motor
+
+```python showLineNumbers title="python_atlas_motor.py"
+import os
+from motor.motor_asyncio import AsyncIOMotorClient
+from dotenv import load_dotenv
+import asyncio
+
+load_dotenv()
+
+mongo_user = os.getenv('MONGO_USER')
+mongo_password = os.getenv('MONGO_PASSWORD')
+
+uri = f"mongodb+srv://{mongo_user}:{mongo_password}@cluster-teste.q2pkwbd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-teste"
+
+async def main():
+    client = AsyncIOMotorClient(uri)
+    db = client.admin
+
+    try:
+        await db.command('ping')
+        print("Pinged your deployment. You successfully connected to MongoDB!")
+    except Exception as e:
+        print(e)
+    finally:
+        client.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```

@@ -144,26 +144,47 @@ mongosh
    mongosh "mongodb://localhost:27017"
    ```
 
-#### 2.2.2. **Criar um banco de dados:**
+#### 2.2.2. **Listar bancos de dados:**
+   ```javascript
+   show dbs
+   ```
+
+#### 2.2.3. **Listar coleções:**
+   ```javascript
+   show collections
+   ```
+
+#### 2.2.4. **Sair do `mongosh`:**
+    ```shell
+    exit
+    ```
+
+#### 2.2.5. **Criar um banco de dados:**
    ```javascript
    use nomeDoBancoDeDados
    ```
 
-#### 2.2.3. **Criar uma coleção:**
+#### 2.2.6. **Criar uma coleção:**
    ```javascript
    db.createCollection("nomeDaColecao")
    ```
 
-#### 2.2.4. **Inserir documentos:**
+#### 2.2.7. **Inserir documentos:**
    ```javascript
    db.nomeDaColecao.insertOne({ chave: "valor", chave2: "valor2" })
    db.nomeDaColecao.insertMany([{ chave: "valor3" }, { chave2: "valor4" }])
    ```
 
-#### 2.2.5. **Buscar documentos:**
-   ```javascript
+#### 2.2.8. **Buscar documentos:**
+   ```bash
    db.nomeDaColecao.find({})
    db.nomeDaColecao.find({ chave: "valor" })
+   db.nomeDaColecao.find( { chave: { $in: [ "oi", "tchau" ] } } )
+   db.movies.find( { countries: "Mexico", "imdb.rating": { $gte: 7 } } )
+   db.movies.find( {
+     year: 2010,
+     $or: [ { "awards.wins": { $gte: 5 } }, { genres: "Drama" } ]
+   } )
    ```
 
 #### 2.2.6. **Atualizar documentos:**
@@ -177,21 +198,6 @@ mongosh
    db.nomeDaColecao.deleteOne({ chave: "valor" })
    db.nomeDaColecao.deleteMany({ chave3: "valorComum" })
    ```
-
-#### 2.2.8. **Listar bancos de dados:**
-   ```javascript
-   show dbs
-   ```
-
-#### 2.2.9. **Listar coleções:**
-   ```javascript
-   show collections
-   ```
-
-#### 2.2.10. **Sair do `mongosh`:**
-    ```shell
-    exit
-    ```
 
 Lembre-se de substituir `nomeDoBancoDeDados`, `nomeDaColecao`, `chave`,
 `valor`, etc., pelos nomes e valores apropriados para o seu caso de uso
