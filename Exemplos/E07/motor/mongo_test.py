@@ -15,7 +15,7 @@ async def main():
     print(f'Documento encontrado: {document}')
 
     # Fechar a conexão
-    await client.close()
+    client.close()
 
 # Executar a função assíncrona principal
 import asyncio
