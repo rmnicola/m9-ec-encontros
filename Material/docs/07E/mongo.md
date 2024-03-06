@@ -103,6 +103,13 @@ Primeiro vamos instalar os pacotes necessários:
   </TabItem>
   <TabItem value="ubuntu" label="Ubuntu">
   ```bash
+  # Adiciona chave publica do repositório ao apt
+  wget -qO - https://www.mongodb.org/static/pgp/server-3.0.asc | sudo apt-key add -
+  # Adiciona o repositório do mongodb à lista de sources
+  echo "deb http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+  # Atualiza os repositórios do apt
+  sudo apt update
+  # Instala o metapacote mongodb-org
   sudo apt install mongodb-org
   ```
   </TabItem>
