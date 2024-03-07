@@ -130,9 +130,9 @@ go mod tidy
 ```
 
 ```bash
-go run subscriber.py
+go run subscriber.go
 ```
 
 ```bash
-go run publisher.py
+go run publisher.go
 ```
