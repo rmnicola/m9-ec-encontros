@@ -2,7 +2,7 @@
 title: Integração Kafka Cloud
 sidebar_position: 3
 sidebar_class_name: ponderada
-slug: /ponderada5
+slug: /ponderada7
 ---
 
 # Integração entre o Kafka cloud e o HiveMQ
