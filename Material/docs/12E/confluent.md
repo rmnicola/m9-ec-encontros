@@ -5,17 +5,28 @@ sidebar_class_name: autoestudo
 slug: /confluent
 ---
 
+import Admonition from '@theme/Admonition';
+
 # Utilizando o confluent
 
-<img 
-  src="https://i.redd.it/q0dd3k02unqb1.gif"
-  alt="Boot process" 
-  style={{ 
-    display: 'block',
-    marginLeft: 'auto',
-    maxHeight: '30vh',
-    marginRight: 'auto'
-  }} 
-/>
-<br/>
+<Admonition 
+    type="info" 
+    title="Autoestudo">
+
+<div style={{ textAlign: 'center' }}>
+    <iframe 
+        style={{
+            display: 'block',
+            margin: 'auto',
+            width: '100%',
+            height: '50vh',
+        }}
+        src="https://www.youtube.com/embed/oI7VAS9KSS4" 
+        frameborder="0" 
+        allowFullScreen>
+    </iframe>
+</div>
+
+</Admonition>
+
 
