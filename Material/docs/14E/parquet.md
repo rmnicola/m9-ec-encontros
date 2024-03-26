@@ -21,7 +21,7 @@ import Admonition from '@theme/Admonition';
             width: '100%',
             height: '50vh',
         }}
-        src="https://www.youtube.com/embed/1j8SdS7s_NY&t" 
+        src="https://www.youtube.com/embed/1j8SdS7s_NY" 
         frameborder="0" 
         allowFullScreen>
     </iframe>
