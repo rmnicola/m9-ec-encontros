@@ -1,9 +1,8 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-	"os"
-	"strconv"
 	"sync"
 	"time"
 )
@@ -48,22 +47,11 @@ func sumWithParallelism(arr []int, numGoroutines int) int {
 }
 
 func main() {
-	if len(os.Args) != 3 {
-		fmt.Println("Usage: go run main.go <numGoroutines> <arraySize>")
-		return
-	}
-
-	numGoroutines, err := strconv.Atoi(os.Args[1])
-	if err != nil || numGoroutines <= 0 {
-		fmt.Println("Invalid number of goroutines:", os.Args[1])
-		return
-	}
-
-	arraySize, err := strconv.Atoi(os.Args[2])
-	if err != nil || arraySize <= 0 {
-		fmt.Println("Invalid array size:", os.Args[2])
-		return
-	}
+	var numGoroutines int
+	var arraySize int
+	flag.IntVar(&numGoroutines, "g", 4, "number of goroutines")
+	flag.IntVar(&arraySize, "s", 10000000, "array size")
+	flag.Parse()
 
 	arr := make([]int, arraySize)
 	for i := range arr {
