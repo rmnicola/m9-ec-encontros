@@ -22,8 +22,7 @@ func main() {
 	go printWithDelay("Mensagem 3", ch)
 
 	// Recebe as mensagens do canal e imprime
-	for i := 0; i < 3; i++ {
-		msg := <-ch
+	for msg := range ch {
 		fmt.Println(msg)
 	}
 
