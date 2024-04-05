@@ -24,6 +24,8 @@ automatizar o deploy de nossa página de documentação (docusaurus) e alguns de
 nossos testes. Portanto, a seguir criaremos um workflow simples para
 exemplificar o que é possível fazer com o Actions.
 
+Atenção: antes de fazer o commit da automação com o GitHub Actions, habilite um token de acesso pessoal. Clique no seu usuário e siga Settings -> Developer Settings -> Personal Access Token -> Tokens (classic) e crie um token, com isso, será possível fazer o commit pelo git.
+
 ## 1. Criando o primeiro workflow
 
 Para criar um workflow novo, basta criar a pasta `.github/workflows` na raíz do
