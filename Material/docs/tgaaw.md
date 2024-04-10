@@ -5,54 +5,55 @@ slug: /the-gods-are-always-watching
 unlisted: true
 ---
 
-# P1 Módulo 9 EC 2024
+# PSUB Módulo 9 EC 2024
 
 ## 1. Enunciado
+   
+Você está desenvolvendo um aplicativo de monitoramento remoto para acompanhar a
+umidade em uma rede de estufas agrícolas. Cada estufa possui diversos sensores
+de umidade distribuídos em pontos estratégicos, como nas áreas de cultivo de
+hortaliças e flores. Esses sensores transmitem periodicamente as leituras de
+umidade em tópicos específicos do MQTT. Seu aplicativo deve se conectar a esses
+tópicos para coletar os dados e exibir as leituras de umidade em tempo real em
+uma interface gráfica. Além disso, o aplicativo deve emitir um alerta na
+interface se a umidade estiver fora dos limites aceitáveis.
 
-Você está desenvolvendo uma ferramenta de linha de comando (CLI) para monitorar
-a temperatura em uma cadeia de supermercados. Cada loja possui vários sensores
-de temperatura espalhados em áreas críticas, como o setor de congelados e o
-setor de produtos frescos. Esses sensores publicam regularmente as leituras de
-temperatura em tópicos específicos do MQTT. Sua ferramenta deve se inscrever
-nesses tópicos para coletar os dados e exibir as temperaturas em tempo real no
-terminal. Além disso, deve emitir um alarme no terminal se a temperatura
-estiver fora dos limites aceitáveis.
+Os limites de umidade são:
 
-Os limites de temperatura são:
-* Setor de Congelados (Freezer): Temperaturas acima de -15°C ou abaixo de -25°C
-  devem acionar um alarme.
-* Setor de Produtos Frescos (Geladeira): Temperaturas acima de 10°C ou abaixo
-  de 2°C devem acionar um alarme.
+* Área de Hortaliças: Umidades abaixo de 30% ou acima de 70% devem acionar um
+  alerta.
+* Área de Flores: Umidades abaixo de 40% ou acima de 80% devem acionar um
+  alerta.
 
 Para simular a operação do sistema, você deve criar um pequeno simulador
-(publisher) capaz de enviar mensagens simulando os sensores de temperatura.
-Para tal, considere que o **payload** dos sensores inclui as seguintes informações:
+(publisher) capaz de enviar mensagens simulando os sensores de umidade. Para
+tal, considere que o **payload** dos sensores inclui as seguintes informações:
 
-1. O id do dispositivo (por esse id deve ser possível identificar a que loja
-   pertence o sensor)
-2. O tipo de dispositivo (freezer ou refrigerador)
-3. O valor de temperatura medido
-4. O timestamp de quando ocorreu a medição
+* O id do dispositivo (por esse id deve ser possível identificar a que estufa
+  pertence o sensor)
+* O tipo de dispositivo (hortaliças ou flores)
+* O valor de umidade medido
+* O timestamp de quando ocorreu a medição
 
 Um exemplo de payload pode ser visto abaixo:
 
 ```json
 {
-  "id": "lj01f01",
-  "tipo": "freezer",
-  "temperatura": -18,
-  "timestamp": "01/03/2024 14:30"
+ "id": "gh01h01",
+ "tipo": "hortaliças",
+ "umidade": 45,
+ "timestamp": "02/03/2024 15:45"
 }
 ```
 
-Exemplo de saída esperada no terminal (use como referência das informações que
+Exemplo de saída esperada na interface (use como referência das informações que
 precisam estar lá, não precisa ser necessariamente com a mesma formatação):
 
 ```bash
-Lj 1: Freezer   1 | -18°C
-Lj 2: Geladeira 3 |   5°C
-Lj 1: Freezer   2 | -26°C [ALERTA: Temperatura BAIXA]
-Lj 3: Geladeira 1 |  12°C [ALERTA: Temperatura ALTA]
+Estufa 2: Flores 3 | 85% Umidade [ALERTA: Umidade ALTA]
+Estufa 1: Hortaliças 1 | 45% Umidade
+Estufa 1: Hortaliças 2 | 25% Umidade [ALERTA: Umidade BAIXA]
+Estufa 3: Flores 1 | 50% Umidade
 ```
 
 O seu projeto deve obrigatóriamente apresentar **testes** para cada uma das

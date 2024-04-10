@@ -12,7 +12,7 @@ func printWithDelay(msg string, ch chan string) {
 }
 
 func main() {
-	ch := make(chan string, 3) // Cria um canal com buffer para 3 strings
+	ch := make(chan string) // Cria um canal com buffer para 3 strings
 
 	start := time.Now() // Início da medição do tempo
 
